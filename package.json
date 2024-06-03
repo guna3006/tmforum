@@ -1,0 +1,29 @@
+{
+    "name": "tmfm",
+    "version": "1.0.0",
+    "main": "run.sh",
+    "scripts": {
+        "helloworld": "echo \"Hello World\" && exit 1"
+    },
+    "keywords": [
+        "telemanagement",
+        "maverick",
+        "open-api",
+        "tmforum",
+        "json-server",
+        "faker",
+        "guna3006",
+        "telemanagement"
+    ],
+    "author": "Gunasegarran",
+    "description": "Simulation for TMForum Open API Models",
+    "license": "MIT",
+    "dependencies": {
+        "nodemon": "^3.1.1",
+        "@faker-js/faker": "^8.4.1",
+        "ajv": "^8.12.0",
+        "json-server": "0.17.4",
+        "path": "^0.12.7",
+        "ip": "^2.0.1"
+    }
+}
