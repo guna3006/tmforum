@@ -101,11 +101,11 @@ const startServer = (server, port, protocol) => {
 };
 
 const httpsPort = process.env.httpsPort || 8000;
-const httpPort = process.env.httpPort || 9000;
+//const httpPort = process.env.httpPort || 9000;
 
 
 const httpServer = createServer(app);
 startServer(httpServer, httpPort, 'http');
 
-const httpsServer = createHttpsServer(sslConfig, app);
-startServer(httpsServer, httpsPort, 'https');
+//const httpsServer = createHttpsServer(sslConfig, app);
+//startServer(httpsServer, httpsPort, 'https');
