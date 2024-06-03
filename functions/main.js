@@ -23,8 +23,7 @@ module.exports.main = (app, db) => {
         error: "Forbidden",
         message: "Kindly follow the tmf-api testing request format!",
         example: [
-          `https://${os.hostname()}:8000/tmf-api/{{version}}/{{apiName}}`,
-          `http://${os.hostname()}:9000/tmf-api/{{version}}/{{apiName}}`
+          `https://gunasegarran.me/tmf-api/{{version}}/{{apiName}}`
         ],
       });
     } else {
@@ -47,27 +46,27 @@ module.exports.main = (app, db) => {
           break;
 
         case "POST":
-          postHandlerCommon.writing(req, res);
+          postHandlerCommon.writing('/tmf-api/v4/',req, res);
           break;
 
         case "GET":
-          getHandlerCommon.common(req, res, db);
+          getHandlerCommon.common('/tmf-api/v4/',req, res, db);
           break;
 
         case "DELETE":
-          deleteHandlerCommon.common(req, res, db);
+          deleteHandlerCommon.common('/tmf-api/v4/',req, res, db);
           break;
 
         case "PATCH":
-          patchHandlerCommon.common(req, res, db);
+          patchHandlerCommon.common('/tmf-api/v4/',req, res, db);
           break;
 
         case "PUT":
-          putHandlerCommon.common(req, res, db);
+          putHandlerCommon.common('/tmf-api/v4/',req, res, db);
           break;
 
         case "OPTIONS":
-          optionsHandlerCommon.common(req, res);
+          optionsHandlerCommon.common('/tmf-api/v4/',req, res);
           break;
       }
     }
