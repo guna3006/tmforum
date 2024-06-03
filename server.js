@@ -10,7 +10,7 @@ const tmf = require("./functions/main.js");
 console.log("Author: Gunsegarran");
 console.log("Application: TMForum Encyclopedia");
 
-const routesFilePath = path.join(__dirname, 'data/custom/routes/routes.json');
+const routesFilePath = path.join(__dirname, './data/custom/routes/routes.json');
 let rewriter;
 if (fs.existsSync(routesFilePath)) {
   const routes = fs.readFileSync(routesFilePath);
@@ -19,9 +19,9 @@ if (fs.existsSync(routesFilePath)) {
 
 
 
-let db = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/custom/db/db.json')));
+let db = JSON.parse(fs.readFileSync(path.join(__dirname, './data/custom/db/db.json')));
 
-const customDbDirectory = path.join(__dirname, 'data/custom/db');
+const customDbDirectory = path.join(__dirname, './data/custom/db');
 function mergeCustomDbFiles() {
   const customDbFiles = fs.readdirSync(customDbDirectory);
 
@@ -72,7 +72,7 @@ const router = jsonServer.router(db);
 const app = jsonServer.create();
 let middlewaresOptions = {};
 if (fs.existsSync()) {
-  middlewaresOptions.static = path.join(__dirname, 'node_modules/json-server/public')
+  middlewaresOptions.static = path.join(__dirname, './node_modules/json-server/public')
 }
 const middlewares = jsonServer.defaults(middlewaresOptions);
 
@@ -87,8 +87,8 @@ app.use(middlewares);
 app.use(router);
 
 const sslConfig = {
-  key: fs.readFileSync(path.join(__dirname, 'data/custom/certs/server-key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, 'data/custom/certs/server-cert.pem'))
+  key: fs.readFileSync(path.join(__dirname, './data/custom/certs/server-key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, './data/custom/certs/server-cert.pem'))
 };
 
 
