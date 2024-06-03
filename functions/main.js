@@ -1,4 +1,5 @@
 module.exports.main = (app, db) => {
+  const os = require("os");
   const setHeader = require("./common/setHeader.js");
   const setSuspiciousHeader = require("./common/suspiciousHeader.js");
   const postHandlerCommon = require("./handler/post/common.js");
@@ -22,8 +23,8 @@ module.exports.main = (app, db) => {
         error: "Forbidden",
         message: "Kindly follow the tmf-api testing request format!",
         example: [
-          "https://localhost:8000/tmf-api/v4/apiName",
-          "http://localhost:9000/tmf-api/v4/apiName",
+          `https://${os.hostname()}:8000/tmf-api/{{version}}/{{apiName}}`,
+          `http://${os.hostname()}:9000/tmf-api/{{version}}/{{apiName}}`
         ],
       });
     } else {

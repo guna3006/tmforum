@@ -1,4 +1,5 @@
 const jsonServer = require("json-server");
+const os = require("os");
 const { createServer } = require('http');
 const { createServer: createHttpsServer } = require('https');
 const path = require("path");
@@ -95,7 +96,7 @@ const sslConfig = {
 const startServer = (server, port, protocol) => {
   server.listen(port, () => {
     console.log(`Listening on port ${port} as ${protocol.toUpperCase()}`);
-    console.log(`@visit: ${protocol.toLowerCase()}://localhost:${port}/*`);
+    console.log(`@visit: ${protocol.toLowerCase()}://${os.hostname()}:${port}/*`);
   });
 };
 

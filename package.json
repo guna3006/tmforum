@@ -21,6 +21,7 @@
     "description": "Simulation for TMForum Open API Models",
     "license": "MIT",
     "dependencies": {
+        "os": "^0.1.1",
         "nodemon": "^3.1.1",
         "@faker-js/faker": "^8.4.1",
         "ajv": "^8.12.0",
