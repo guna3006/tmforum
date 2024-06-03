@@ -104,9 +104,6 @@ const startServer = (server, port, protocol) => {
 // get environment variables
 const httpPort = process.env.APP_PORT || 9000;
 //const httpsPort = process.env.httpsPort || 8000;
-const nodeEnv = process.env.NODE_ENV;
-const appName = process.env.APP_NAME;
-const version = 4;
 
 
 
@@ -115,12 +112,3 @@ startServer(httpServer, httpPort, 'http');
 
 //const httpsServer = createHttpsServer(sslConfig, app);
 //startServer(httpsServer, httpsPort, 'https');
-
-app.get('/tmf-api/v4/api/healthcheck', (req, res) => {
-  res.send({
-    status: 'online',
-    version,
-    nodeEnv,
-    appName
-  });
-});
