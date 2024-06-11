@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  tmf:
+    image: guna3006/tmfm:5.0.0
+    hostname: tmfm
+    restart: always
+    ports:
+      - "9000:9000"
+      - "8000:8000"

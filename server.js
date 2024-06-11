@@ -1,5 +1,4 @@
 const jsonServer = require("json-server");
-const os = require("os");
 const { createServer } = require('http');
 const { createServer: createHttpsServer } = require('https');
 const path = require("path");
@@ -11,7 +10,7 @@ const tmf = require("./functions/main.js");
 console.log("Author: Gunsegarran");
 console.log("Application: TMForum Encyclopedia");
 
-const routesFilePath = path.join(__dirname, './data/custom/routes/routes.json');
+const routesFilePath = path.join(__dirname, 'data/custom/routes/routes.json');
 let rewriter;
 if (fs.existsSync(routesFilePath)) {
   const routes = fs.readFileSync(routesFilePath);
@@ -20,9 +19,9 @@ if (fs.existsSync(routesFilePath)) {
 
 
 
-let db = JSON.parse(fs.readFileSync(path.join(__dirname, './data/custom/db/db.json')));
+let db = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/custom/db/db.json')));
 
-const customDbDirectory = path.join(__dirname, './data/custom/db');
+const customDbDirectory = path.join(__dirname, 'data/custom/db');
 function mergeCustomDbFiles() {
   const customDbFiles = fs.readdirSync(customDbDirectory);
 
@@ -73,7 +72,7 @@ const router = jsonServer.router(db);
 const app = jsonServer.create();
 let middlewaresOptions = {};
 if (fs.existsSync()) {
-  middlewaresOptions.static = path.join(__dirname, './node_modules/json-server/public')
+  middlewaresOptions.static = path.join(__dirname, 'node_modules/json-server/public')
 }
 const middlewares = jsonServer.defaults(middlewaresOptions);
 
@@ -88,27 +87,24 @@ app.use(middlewares);
 app.use(router);
 
 const sslConfig = {
-  key: fs.readFileSync(path.join(__dirname, './data/custom/certs/server-key.pem')),
-  cert: fs.readFileSync(path.join(__dirname, './data/custom/certs/server-cert.pem'))
+  key: fs.readFileSync(path.join(__dirname, 'data/custom/certs/server-key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'data/custom/certs/server-cert.pem'))
 };
 
 
 const startServer = (server, port, protocol) => {
   server.listen(port, () => {
     console.log(`Listening on port ${port} as ${protocol.toUpperCase()}`);
-    console.log(`@visit: ${protocol.toLowerCase()}://${os.hostname()}:${port}/*`);
+    console.log(`@visit: ${protocol.toLowerCase()}://localhost:${port}/*`);
   });
 };
 
-
-// get environment variables
-const httpPort = process.env.APP_PORT || 9000;
-//const httpsPort = process.env.httpsPort || 8000;
-
+const httpsPort = 8000;
+const httpPort = 9000;
 
 
 const httpServer = createServer(app);
 startServer(httpServer, httpPort, 'http');
 
-//const httpsServer = createHttpsServer(sslConfig, app);
-//startServer(httpsServer, httpsPort, 'https');
+const httpsServer = createHttpsServer(sslConfig, app);
+startServer(httpsServer, httpsPort, 'https');

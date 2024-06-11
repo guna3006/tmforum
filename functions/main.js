@@ -1,5 +1,4 @@
 module.exports.main = (app, db) => {
-  const os = require("os");
   const setHeader = require("./common/setHeader.js");
   const setSuspiciousHeader = require("./common/suspiciousHeader.js");
   const postHandlerCommon = require("./handler/post/common.js");
@@ -23,7 +22,8 @@ module.exports.main = (app, db) => {
         error: "Forbidden",
         message: "Kindly follow the tmf-api testing request format!",
         example: [
-          `https://gunasegarran.me/tmf-api/{{version}}/{{apiName}}`
+          "https://localhost:8000/tmf-api/v4/apiName",
+          "http://localhost:9000/tmf-api/v4/apiName",
         ],
       });
     } else {
@@ -46,27 +46,27 @@ module.exports.main = (app, db) => {
           break;
 
         case "POST":
-          postHandlerCommon.writing('/tmf-api/v4/',req, res);
+          postHandlerCommon.writing(req, res);
           break;
 
         case "GET":
-          getHandlerCommon.common('/tmf-api/v4/',req, res, db);
+          getHandlerCommon.common(req, res, db);
           break;
 
         case "DELETE":
-          deleteHandlerCommon.common('/tmf-api/v4/',req, res, db);
+          deleteHandlerCommon.common(req, res, db);
           break;
 
         case "PATCH":
-          patchHandlerCommon.common('/tmf-api/v4/',req, res, db);
+          patchHandlerCommon.common(req, res, db);
           break;
 
         case "PUT":
-          putHandlerCommon.common('/tmf-api/v4/',req, res, db);
+          putHandlerCommon.common(req, res, db);
           break;
 
         case "OPTIONS":
-          optionsHandlerCommon.common('/tmf-api/v4/',req, res);
+          optionsHandlerCommon.common(req, res);
           break;
       }
     }

@@ -1,0 +1,36 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "TMF API",
+      "version": "4"
+    },
+    "servers": [
+      {
+        "url": "http://gunasegarran.me:9000"
+      }
+    ],
+    "paths": {
+      "/tmf-api/v4/api/all": {
+        "options": {
+          "summary": "Retrieve all available APIs",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
