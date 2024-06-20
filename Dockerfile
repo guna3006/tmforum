@@ -2,7 +2,6 @@ FROM node:current-alpine3.19
 
 WORKDIR /
 ADD data /data
-VOLUME /data/custom/db
 
 WORKDIR /
 ADD package.json /package.json
