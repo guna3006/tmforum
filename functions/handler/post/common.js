@@ -20,15 +20,15 @@ module.exports.writing = (req, res) => {
     reqBody.id = faker.string.uuid();
     reqBody.type = apiType;
   } else if (version === "v5") {
-    reqBody.id = `hardcode-id-12345`;
-    if (reqBody.state) {
-      return res.status(400).json({
-        error: `"State":${reqBody.state} object must not be provided in the POST request`,
-      });
-    }
+    reqBody.id = `gunasegarran-id-12345`;
+//    if (reqBody.state) {
+//      return res.status(400).json({
+//        error: `"State":${reqBody.state} object must not be provided in the POST request`,
+//      });
+//    }
     reqBody["@type"] = apiType;
   }
-  reqBody.href = `${protocol}://${hostname}:${port}/${tmfApi}/${version}/${apiName}/${reqBody.id}`;
+  reqBody.href = `${protocol}://gunasegarran.me:${port}/${tmfApi}/${version}/${apiName}/${reqBody.id}`;
 
   const newData = { [apiName]: [reqBody] };
 
